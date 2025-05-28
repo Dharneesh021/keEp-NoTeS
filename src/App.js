@@ -36,15 +36,24 @@ function App() {
 
 
 useEffect(() => {
-  if (!Array.isArray(posts)) return; 
+  if (!Array.isArray(posts)) {
+    setSearchResult([]);
+    return;
+  }
 
-  const filter = posts.filter((elements) => 
-    elements.title.toUpperCase().includes(search.toUpperCase()) ||
-    elements.body.toUpperCase().includes(search.toUpperCase())
-  );
+  const filtered = posts.filter((element) => {
+    const title = element.title || "";
+    const body = element.body || "";
 
-  setSearchResult(filter.reverse());
+    return (
+      title.toUpperCase().includes(search.toUpperCase()) ||
+      body.toUpperCase().includes(search.toUpperCase())
+    );
+  });
+
+  setSearchResult(filtered.reverse());
 }, [posts, search]);
+
 
 
 
