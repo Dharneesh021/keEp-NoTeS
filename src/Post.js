@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Post = ({elemets}) => {
-  
+const Post = ({ elemets }) => {
+  const element = elemets;
   return (
     <article className="post">
                 <Link to={`post/${elements.id}`}>
