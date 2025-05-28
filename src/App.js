@@ -35,15 +35,17 @@ function App() {
   }, [data])
 
 
-  // Search Element
-  useEffect(() => {
-    const filter = posts.filter((elements) => 
-      (((elements.title).toUpperCase()).includes(search.toUpperCase())) ||
-      (((elements.body).toUpperCase()).includes(search.toUpperCase()))
-    );
+useEffect(() => {
+  if (!Array.isArray(posts)) return; 
 
-    setSearchResult(filter.reverse())
-  }, [posts , search])
+  const filter = posts.filter((elements) => 
+    elements.title.toUpperCase().includes(search.toUpperCase()) ||
+    elements.body.toUpperCase().includes(search.toUpperCase())
+  );
+
+  setSearchResult(filter.reverse());
+}, [posts, search]);
+
 
 
   // NewPost Submit
