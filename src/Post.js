@@ -5,7 +5,7 @@ const Post = ({elemets}) => {
   
   return (
     <article className="post">
-                <Link to={`post/${element.id}`}>
+                <Link to={`post/${elements.id}`}>
                       <h2>{elemets.title}</h2>
                       <p className='postDate'>{elemets.datetime}</p>
                 </Link>
