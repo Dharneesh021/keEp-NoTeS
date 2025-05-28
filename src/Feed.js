@@ -4,12 +4,9 @@ import Post from './Post'
 const Feed = ({posts , setPosts}) => {
   return (
     <>
-            {posts.map((elemets)=>
-              <Post 
-                key={elemets.id}
-                elemets={elemets}
-            />
-            )}
+            {posts.map((element) => (
+  <Post key={element.id} element={element} />
+))}
         </> 
   )
 }
