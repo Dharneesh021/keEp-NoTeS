@@ -25,7 +25,7 @@ function App() {
   const [editBody , setEditBody] = useState('')
   const navigate = useNavigate();
   const {width} = useWindowSize();
-  const {data , isLoading , fetchErrors} = useAxiosFetch('https://json-server-db-u875.onrender.com/posts' || process.env.REACT_APP_API_URL)
+  const {data , isLoading , fetchErrors} = useAxiosFetch('https://json-server-db-u875.onrender.com/' || process.env.REACT_APP_API_URL)
 
 
   // Fetch Data
