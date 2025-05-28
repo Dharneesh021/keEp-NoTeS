@@ -58,21 +58,26 @@ useEffect(() => {
 
 
   // NewPost Submit
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    const idNum = posts.length ? Number(posts[posts.length - 1].id) + 1 : 1;
-    // console.log(typeof(idNum),idNum)
-    const id = idNum.toString()
-    console.log(typeof(id),id)
-    const datetime = format(new Date() , 'MMM dd, yyyy pp')
-    const listItems = { id , title: postTitle , datetime , body: postBody}
-    const list = await api.post('/posts' , listItems)
-    const allPosts = [...posts , list.data]
-    setPosts(allPosts)
-    setPostTitle('')
-    setPostBody('')
-    navigate('/')
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const datetime = format(new Date(), 'MMM dd, yyyy pp');
+  const listItems = {
+    title: postTitle,
+    datetime,
+    body: postBody,
+  };
+  try {
+    const response = await api.post('/posts', listItems);
+    const allPosts = [...posts, response.data];
+    setPosts(allPosts);
+    setPostTitle('');
+    setPostBody('');
+    navigate('/');
+  } catch (err) {
+    console.error("Error submitting post:", err.message);
   }
+};
+
 
   // Edit Post
   const handleEdit = async(id)=>{
