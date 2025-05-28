@@ -4,10 +4,10 @@ import Post from './Post'
 const Feed = ({posts , setPosts}) => {
   return (
     <>
-            {posts.map((elemets)=>
+            {posts.map((elemet)=>
               <Post 
-                key={elemets.id}
-                elemets={elemets}
+                key={elemet.id}
+                elemets={elemet}
             />
             )}
         </> 
